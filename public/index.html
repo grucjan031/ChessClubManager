@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejestracja i Logowanie</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- BANER (nagłówek) -->
+    <header class="banner">
+        <h1>Skoczek.PL ♞</h1>
+        <p>Witaj w świecie szachów!</p>
+    </header>
+
+    <main>
+        <section id="auth-selection">
+            <h2>Wybierz opcję</h2>
+            <button id="show-registration">Rejestracja</button>
+            <button id="show-login">Logowanie</button>
+        </section>
+
+        <section id="registration" style="display: none;">
+            <h2>Rejestracja</h2>
+            <form id="registration-form">
+                <label for="reg-email">Email:</label>
+                <input type="email" id="reg-email" required>
+                <label for="reg-password">Hasło:</label>
+                <input type="password" id="reg-password" required>
+                <label for="reg-role">Rola:</label>
+                <select id="reg-role">
+                    <option value="player">Zawodnik</option>
+                    <option value="coordinator">Koordynator</option>
+                </select>
+                <div id="club-name-section" style="display: none;">
+                    <label for="reg-club-name">Nazwa klubu:</label>
+                    <input type="text" id="reg-club-name">
+                </div>
+                <button type="submit">Zarejestruj</button>
+            </form>
+            <button id="back-to-selection">Powrót</button>
+        </section>
+
+        <section id="login" style="display: none;">
+            <h2>Logowanie</h2>
+            <form id="login-form">
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" required>
+                <label for="login-password">Hasło:</label>
+                <input type="password" id="login-password" required>
+                <button type="submit">Zaloguj</button>
+            </form>
+            <button id="back-to-selection-login">Powrót</button>
+        </section>
+        <section id="choose-club-panel" style="display: none;">
+            <h2>Wybierz klub</h2>
+            <ul id="clubs-list"></ul>
+        </section>
+        <!-- Sekcja wyboru klubu (dla zawodnika, który nie ma przypisanego klubu) -->
+        <section id="choose-club-panel" style="display: none;">
+            <h2>Wybierz klub</h2>
+            <ul id="clubs-list"></ul>
+        </section>
+
+        <!-- Panel koordynatora -->
+        <section id="coordinator-panel" style="display: none;">
+            <h2>Panel Koordynatora</h2>
+            <h3>Lista zawodników:</h3>
+            <ul id="players-list"></ul>
+
+            <h3>Dodaj turniej:</h3>
+            <form id="tournament-form">
+                <label for="tournament-name">Nazwa:</label>
+                <input type="text" id="tournament-name" required><br><br>
+
+                <label for="tournament-date">Data:</label>
+                <input type="date" id="tournament-date" required><br><br>
+
+                <label for="tournament-description">Opis:</label><br>
+                <textarea id="tournament-description"></textarea><br><br>
+
+                <button type="submit">Dodaj turniej</button>
+            </form>
+            <!-- NOWA SEKCJA: DODAWANIE WYNIKÓW I OCEN -->
+            <h3>Dodaj wyniki turniejowe i oceny</h3>
+            <form id="add-results-form">
+                <!-- Lista turniejów do wyboru -->
+                <label for="result-tournament-select">Turniej:</label>
+                <select id="result-tournament-select"></select>
+                <br><br>
+
+                <!-- Lista zawodników do wyboru -->
+                <label for="result-player-select">Zawodnik:</label>
+                <select id="result-player-select"></select>
+                <br><br>
+
+                <!-- Statystyki partii -->
+                <label for="games-played">Rozegrane partie:</label>
+                <input type="number" id="games-played" min="0" required>
+                <br><br>
+
+                <label for="wins">Zwycięstwa:</label>
+                <input type="number" id="wins" min="0" required>
+                <br><br>
+
+                <label for="draws">Remisy:</label>
+                <input type="number" id="draws" min="0" required>
+                <br><br>
+
+                <label for="losses">Porażki:</label>
+                <input type="number" id="losses" min="0" required>
+                <br><br>
+
+                <!-- Ocena (1–10) -->
+                <label for="rating">Ocena (1-10):</label>
+                <input type="number" id="rating" min="1" max="10">
+                <br><br>
+
+                <button type="submit">Zapisz wyniki</button>
+            </form>
+            <button class="logout-btn">Wyloguj</button>
+        </section>
+
+        <!-- Panel zawodnika -->
+        <section id="player-panel" style="display: none;">
+            <h2>Panel Zawodnika</h2>
+            <h3>Twoje wyniki:</h3>
+            <ul id="results-list"></ul>
+            <button class="logout-btn">Wyloguj</button>
+        </section>
+
+    </main>
+    <footer>
+        <nav id="coordinator-footer-nav">
+          
+        </nav>
+        <p>Gracjan Połomski</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
